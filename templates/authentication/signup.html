@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block css_files %}
+        <link rel="stylesheet" href="{% static 'signup.css' %}" />
+    {% endblock %}
+    </head>
+    <body>
+        <div class="container">
+                {% for message in messages  %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        <strong>Message:</strong> {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+
+            <div class='box'>
+                    <div class="box1">
+                        <div class="batman"><img src="{% static 'Images/Batman.jpg' %}"/></div>
+                    </div>
+                    <div class="box2">
+                       <div class="box3">
+                        
+                        
+                        <div class="sub">
+                            <h3>Create Account</h3>
+                        </div>
+                    </div>
+                        
+                        <form class="box4" action="/signup" method="post">
+                            {% csrf_token %}
+                            <input type="text" id="username" name="username" placeholder="Create a username" Required>
+                            <input type="text" id="fname" name="fname" placeholder="Enter your first name" Required>
+                            <input type="text" id="lname" name="lname" placeholder="Enter your last name" Required>
+                            <input type="email" id="email" name="email" placeholder="Enter your email address" Required>
+                            <input type="password" id="pass1" name="pass1" placeholder="Create password" Required>
+                            <input type="password" id="pass2" name="pass2" placeholder="Confirm password" Required>
+                            <button type="submit" class="button">Sign Up</button>
+                        </form>
+                    </div>
+            </div>
+        </div>
+        <script src="" async defer></script>
+    </body>
+</html>
